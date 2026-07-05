@@ -34,6 +34,6 @@ constructs decreasing variables through cumulative products. These are
 transformed using the Gumbel quantile function \code{\link{qgd}}.
 }
 \examples{
-x <- rgdr(n=10, r=3, loc = 0, scale = 1)
+x <- rgdr(10, 3, loc = 0, scale = 1)
 x$rmat
 }

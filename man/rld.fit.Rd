@@ -81,8 +81,10 @@ are supported through generalized linear modelling of the location and
 scale parameters.
 }
 \examples{
-x <- rldr(n = 50, r = 3, loc = 10, scale = 2)
+x <- rldr(n = 50, r = 2, loc = 10, scale = 2)
 fit <- rld.fit(x$rmat, num_inits = 5)
+fit$r
+fit$mle
 }
 \references{
 Coles, S. (2001).

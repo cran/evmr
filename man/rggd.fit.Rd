@@ -92,6 +92,8 @@ and shape parameters.
 \examples{
 x <- rggdr(n = 50, r = 2, loc = 10, scale = 2, shape = 0.1)
 fit <- rggd.fit(x$rmat)
+fit$r
+fit$mle
 }
 \seealso{
 \code{\link{optim}}

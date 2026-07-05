@@ -27,8 +27,10 @@
 #' @examples
 #' x <- rggdr(n = 50, r = 2, loc = 10, scale = 2, shape = 0.1)
 #' fit <- rggd.fit(x$rmat)
-#' out <- rggd.rl(fit, year = c(20, 50, 100, 200))
-rggd.rl <- function(z, year = c(20, 50, 100, 200), show=TRUE) {
+#' out <- rggd.rl(fit, year = c(20, 50, 100))
+#' out$rl
+#' out$rlse
+rggd.rl <- function(z, year = c(20, 50, 100, 200), show = FALSE) {
 
   if (!inherits(z, "rggd.fit")) {
     warning("'z' does not inherit from class 'rggd.fit'.")
@@ -83,8 +85,9 @@ rggd.rl <- function(z, year = c(20, 50, 100, 200), show=TRUE) {
   names(z$rl) <- paste0(as.character(year), "y")
   names(z$rlse) <- paste0(as.character(year), "y")
 
-  if(show) {
-    print(z[c("rl", "rlse")])}
+  if (show) {
+    print(z[c("rl", "rlse")])
+  }
 
-  z
+  invisible(z)
 }

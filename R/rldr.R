@@ -21,30 +21,11 @@
 #' constructs decreasing transformed variables recursively. These are
 #' transformed by the logistic quantile function \code{\link{qld}}.
 #'
-#' @references
-#'
-#' Coles, S. (2001).
-#' An Introduction to Statistical Modeling of Extreme Values.
-#' Springer.
-#'
-#' Bader, B., Yan, J., & Zhang, X. (2017).
-#' Automated selection of \eqn{r} for the r-largest order statistics approach.
-#' \emph{Statistics and Computing}.
-#' \doi{10.1007/s11222-016-9697-3}
-#'
-#' Shin, Y., & Park, J-S. (2024).
-#' Generalized logistic model for r-largest order statistics with
-#' hydrological application.
-#' \emph{Stochastic Environmental Research and Risk Assessment}.
-#' \doi{10.1007/s00477-023-02642-7}
-#'
-#'
 #' @export
 #'
 #' @examples
-#' x <- rldr(n=50, r=3, loc = 0, scale = 1)
+#' x <- rldr(10, 3, loc = 0, scale = 1)
 #' x$rmat
-#'
 rldr <- function(n, r, loc = 0, scale = 1) {
 
   if (!is.numeric(n) || length(n) != 1 || !is.finite(n) || n <= 0 || n != as.integer(n)) {

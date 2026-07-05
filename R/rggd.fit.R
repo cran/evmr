@@ -58,6 +58,8 @@
 #' @examples
 #' x <- rggdr(n = 50, r = 2, loc = 10, scale = 2, shape = 0.1)
 #' fit <- rggd.fit(x$rmat)
+#' fit$r
+#' fit$mle
 rggd.fit <- function(xdat, r = NULL, ydat = NULL, mul = NULL, sigl = NULL, hl = NULL,
                      mulink = identity, siglink = identity, hlink = identity,
                      num_inits = 100, muinit = NULL, siginit = NULL, hinit = NULL,
@@ -319,5 +321,5 @@ rggd.fit <- function(xdat, r = NULL, ydat = NULL, mul = NULL, sigl = NULL, hl = 
   }
 
   class(z) <- "rggd.fit"
-  z
+  invisible(z)
 }

@@ -43,12 +43,8 @@ The resulting p-values are adjusted using the ForwardStop and StrongStop
 procedures to help determine an appropriate value of \eqn{r}.
 }
 \examples{
-
-\donttest{
-x <- rggdr(n=50, r=3, loc = 10, scale = 2, shape = 0.1)
-rggdEdtest(x$rmat)
-
-#' data(bangkok)
+\dontrun{
+data(bangkok)
 rggdEdtest(bangkok)
 }
 }

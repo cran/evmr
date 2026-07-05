@@ -83,6 +83,8 @@ parameters.
 \examples{
 x <- rgdr(n = 50, r = 2, loc = 10, scale = 2)
 fit <- rgd.fit(x$rmat)
+fit$r
+fit$mle
 }
 \references{
 Coles, S. (2001).

@@ -41,15 +41,6 @@ x <- rglor(10, 3, loc = 0, scale = 1, shape = 0.1)
 x$rmat
 }
 \references{
-Bader, B., Yan, J., & Zhang, X. (2017).
-Automated selection of \eqn{r} for the r-largest order statistics approach.
-\emph{Statistics and Computing}.
-\doi{10.1007/s11222-016-9697-3}
-
-Coles, S. (2001).
-An Introduction to Statistical Modeling of Extreme Values.
-Springer.
-
 Shin, Y., & Park, J-S. (2024).
 Generalized logistic model for r-largest order statistics with
 hydrological application.

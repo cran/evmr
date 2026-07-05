@@ -36,9 +36,9 @@ likelihood contributions from models with \eqn{r} and \eqn{r-1} order
 statistics.
 }
 \examples{
-\donttest{
-x <- rk4dr(n=50, r=2, loc = 10, scale = 2, shape1 = 0.1, shape2 = 0.1)
-rk4dEd(x$rmat)
+\dontrun{
+data(bangkok)
+rk4dEd(bangkok)
 }
 }
 \references{

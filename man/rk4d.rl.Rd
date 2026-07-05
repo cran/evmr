@@ -4,7 +4,7 @@
 \alias{rk4d.rl}
 \title{Return Levels for the Four-Parameter Kappa Distribution}
 \usage{
-rk4d.rl(z, year = c(20, 50, 100, 200), show = TRUE)
+rk4d.rl(z, year = c(20, 50, 100, 200), show = FALSE)
 }
 \arguments{
 \item{z}{An object returned by \code{\link{rk4d.fit}}. The fitted model
@@ -38,27 +38,9 @@ and standard errors are obtained using the delta method.
 \examples{
 x <- rk4dr(n = 50, r = 2, loc = 10, scale = 2, shape1 = 0.1, shape2 = 0.1)
 fit <- rk4d.fit(x$rmat, num_inits = 5)
-out <- rk4d.rl(fit, year = c(20, 50, 100, 200))
-}
-\references{
-Hosking, J. R. M. (1994).
-The four-parameter kappa distribution.
-\emph{IBM Journal of Research and Development}, 38(3), 251–258.
-
-Coles, S. (2001).
-An Introduction to Statistical Modeling of Extreme Values.
-Springer.
-
-Bader, B., Yan, J., & Zhang, X. (2017).
-Automated selection of \eqn{r} for the r-largest order statistics approach.
-\emph{Statistics and Computing}.
-\doi{10.1007/s11222-016-9697-3}
-
-Shin, Y., & Park, J.-S. (2023).
-Modeling climate extremes using the four-parameter kappa distribution
-for r-largest order statistics.
-\emph{Weather and Climate Extremes}.
-\doi{10.1016/j.wace.2022.100533}
+out <- rk4d.rl(fit, year = c(20, 50, 100))
+out$rl
+out$rlse
 }
 \seealso{
 \code{\link{rk4d.fit}}, \code{\link{rk4d.prof}}

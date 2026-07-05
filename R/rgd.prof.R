@@ -27,9 +27,11 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' x <- rgdr(n = 50, r = 2, loc = 10, scale = 2)
 #' fit <- rgd.fit(x$rmat)
 #' rgd.prof(fit, m = 100, xlow = 12, xup = 25)
+#' }
 rgd.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
 
   if (m <= 1)
@@ -66,7 +68,7 @@ rgd.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
   v <- numeric(nint)
   x <- seq(xlow, xup, length.out = nint)
   sol <- c(z$mle[2])
-  rl <- rgd.rl(z, m, show=FALSE)$rl
+  rl <- rgd.rl(z, m)$rl
 
   rgd.plik <- function(a) {
     zr <- as.matrix(z$data[, r, drop = FALSE])
@@ -120,6 +122,7 @@ rgd.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
   }
 
   w_df <- do.call(rbind, result_list)
+  print(w_df)
 
   plot(
     d$x, d$v, type = "l", xlab = "Return level", xlim = c(xlow, xup), las = 1,
@@ -159,5 +162,5 @@ rgd.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
     cex = 0.8
   )
 
-  w_df
+  invisible(w_df)
 }

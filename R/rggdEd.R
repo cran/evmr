@@ -41,8 +41,10 @@
 #' @export
 #'
 #' @examples
-#' x <- rggdr(n=50, r=3, loc = 10, scale = 2, shape = 0.1)
-#' rggdEd(x$rmat)
+#' \dontrun{
+#' data(bangkok)
+#' rggdEd(bangkok)
+#' }
 rggdEd <- function(data) {
 
   if (!is.matrix(data) && !is.data.frame(data)) {

@@ -74,6 +74,6 @@ of \code{r}, the function fits the model using \code{\link{rggd.fit}}
 and computes return levels using \code{\link{rggd.rl}}.
 }
 \examples{
-x <- rggdr(n = 50, r = 2, loc = 10, scale = 2, shape = 0.1)
+x <- rggdr(n = 50, r = 3, loc = 10, scale = 2, shape = 0.1)
 rggd.summary(x$rmat)
 }

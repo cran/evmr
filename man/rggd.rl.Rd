@@ -4,7 +4,7 @@
 \alias{rggd.rl}
 \title{Return Levels for the Generalized Gumbel Distribution}
 \usage{
-rggd.rl(z, year = c(20, 50, 100, 200), show = TRUE)
+rggd.rl(z, year = c(20, 50, 100, 200), show = FALSE)
 }
 \arguments{
 \item{z}{An object returned by \code{\link{rggd.fit}}. The fitted model
@@ -35,7 +35,9 @@ Standard errors are obtained using the delta method.
 \examples{
 x <- rggdr(n = 50, r = 2, loc = 10, scale = 2, shape = 0.1)
 fit <- rggd.fit(x$rmat)
-out <- rggd.rl(fit, year = c(20, 50, 100, 200))
+out <- rggd.rl(fit, year = c(20, 50, 100))
+out$rl
+out$rlse
 }
 \seealso{
 \code{\link{rggd.fit}}, \code{\link{rggd.prof}}

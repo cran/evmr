@@ -36,8 +36,10 @@ likelihood contributions from models with \eqn{r} and \eqn{r-1} order
 statistics.
 }
 \examples{
-x <- rggdr(n=50, r=3, loc = 10, scale = 2, shape = 0.1)
-rggdEd(x$rmat)
+\dontrun{
+data(bangkok)
+rggdEd(bangkok)
+}
 }
 \references{
 Shin, Y., & Park, J.-S. (2025).

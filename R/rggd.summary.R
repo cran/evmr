@@ -39,7 +39,7 @@
 #' @export
 #'
 #' @examples
-#' x <- rggdr(n = 50, r = 2, loc = 10, scale = 2, shape = 0.1)
+#' x <- rggdr(n = 50, r = 3, loc = 10, scale = 2, shape = 0.1)
 #' rggd.summary(x$rmat)
 rggd.summary <- function(data, r = NULL, ydat = NULL, mul = NULL, sigl = NULL, hl = NULL,
                          mulink = identity, siglink = identity, hlink = identity,

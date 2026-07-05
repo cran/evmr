@@ -35,9 +35,11 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' x <- rggdr(n = 50, r = 2, loc = 10, scale = 2, shape = 0.1)
 #' fit <- rggd.fit(x$rmat)
-#' rggd.prof(fit, m = 100, xlow = 12, xup = 30)
+#' rggd.prof(fit, m = 100, xlow = 12, xup = 25)
+#' }
 rggd.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
 
   tol <- .Machine$double.eps^0.5
@@ -90,33 +92,33 @@ rggd.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
   v <- numeric(nint)
   x <- seq(xlow, xup, length.out = nint)
   sol <- c(z$mle[2], z$mle[3])   # initial values: sigma, h
-  rl <- rggd.rl(z, year = m, show=FALSE)$rl[1]
+  rl <- rggd.rl(z, year = m)$rl[1]
 
   rggd.plik <- function(a) {
     sc <- a[1]
     h  <- a[2]
 
     if (!is.finite(sc) || !is.finite(h) || sc <= 0 || abs(h) < tol) {
-      return(1e6)
+      return(Inf)
     }
 
     # Return level equation solved for mu
     yp <- (1 - p^h) / h
     if (!is.finite(yp) || yp <= 0) {
-      return(1e6)
+      return(Inf)
     }
 
     mu <- xp + (sc / h) * (yp^h - 1)
 
     if (!is.finite(mu)) {
-      return(1e6)
+      return(Inf)
     }
 
     ri <- r - seq_len(r)
     cr <- 1 - ri * h
 
     if (any(cr <= 0, na.rm = TRUE)) {
-      return(1e6)
+      return(Inf)
     }
 
     xmat <- as.matrix(z$data)
@@ -132,7 +134,7 @@ rggd.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
         any(!is.finite(f), na.rm = TRUE) ||
         any(y <= 0, na.rm = TRUE) ||
         any(f <= 0, na.rm = TRUE)) {
-      return(1e6)
+      return(Inf)
     }
 
     yy <- log(sc) - log(y) - matrix(log(cr), nrow = nrow(xmat), ncol = ncol(xmat), byrow = TRUE)
@@ -141,7 +143,7 @@ rggd.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
     nll <- sum(((r * h - 1) / h) * log(f) + yy, na.rm = TRUE)
 
     if (!is.finite(nll)) {
-      return(1e6)
+      return(Inf)
     }
 
     nll
@@ -158,7 +160,7 @@ rggd.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
     )
 
     if (inherits(opt, "try-error") || !is.finite(opt$value)) {
-      v[i] <- 1e6
+      v[i] <- Inf
     } else {
       v[i] <- opt$value
       sol <- opt$par
@@ -197,6 +199,7 @@ rggd.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
   }
 
   w_df <- do.call(rbind, result_list)
+  print(w_df)
 
   plot(
     d$x, d$v, type = "l", xlab = "Return level", xlim = c(xlow, xup), las = 1,
@@ -236,5 +239,5 @@ rggd.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
     cex = 0.8
   )
 
-  w_df
+  invisible(w_df)
 }

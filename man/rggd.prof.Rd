@@ -45,9 +45,11 @@ to peak streamflow.
 \doi{10.1038/s41598-024-83273-y}
 }
 \examples{
+\dontrun{
 x <- rggdr(n = 50, r = 2, loc = 10, scale = 2, shape = 0.1)
 fit <- rggd.fit(x$rmat)
-rggd.prof(fit, m = 100, xlow = 12, xup = 30)
+rggd.prof(fit, m = 100, xlow = 12, xup = 25)
+}
 }
 \seealso{
 \code{\link{rggd.fit}}, \code{\link{rggd.rl}}

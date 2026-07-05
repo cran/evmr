@@ -24,7 +24,7 @@
 #' @export
 #'
 #' @examples
-#' x <- rgdr(n=10, r=3, loc = 0, scale = 1)
+#' x <- rgdr(10, 3, loc = 0, scale = 1)
 #' x$rmat
 rgdr <- function(n, r, loc = 0, scale = 1) {
 

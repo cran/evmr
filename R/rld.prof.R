@@ -24,26 +24,15 @@
 #' are added to indicate profile likelihood confidence intervals for the
 #' confidence levels specified in \code{conf}.
 #'
-#' @references
-#'
-#' Coles, S. (2001).
-#' An Introduction to Statistical Modeling of Extreme Values.
-#' Springer.
-#'
-#' Shin, Y., & Park, J-S. (2024).
-#' Generalized logistic model for r-largest order statistics with
-#' hydrological application.
-#' \emph{Stochastic Environmental Research and Risk Assessment}.
-#' \doi{10.1007/s00477-023-02642-7}
-#'
 #' @seealso \code{\link{rld.fit}}, \code{\link{rld.rl}}
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' x <- rldr(n = 50, r = 2, loc = 10, scale = 2)
 #' fit <- rld.fit(x$rmat)
 #' rld.prof(fit, m = 100, xlow = 12, xup = 25)
-#'
+#' }
 rld.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
 
   if (!inherits(z, "rld.fit")) {
@@ -94,7 +83,7 @@ rld.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
   v <- numeric(nint)
   x <- seq(xlow, xup, length.out = nint)
   sol <- c(z$mle[2])   # initial value: sigma
-  rl <- rld.rl(z, year = m, show=FALSE)$rl
+  rl <- rld.rl(z, year = m)$rl[1]
 
   rld.plik <- function(a) {
 
@@ -192,6 +181,7 @@ rld.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
   }
 
   w_df <- do.call(rbind, result_list)
+  print(w_df)
 
   plot(
     d$x, d$v, type = "l", xlab = "Return level", xlim = c(xlow, xup), las = 1,
@@ -231,5 +221,5 @@ rld.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
     cex = 0.8
   )
 
-  w_df
+  invisible(w_df)
 }

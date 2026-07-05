@@ -44,10 +44,10 @@
 #' @export
 #'
 #' @examples
-#'
-#' x <- rglor(n=50, r=3, loc = 10, scale = 2, shape = 0.1)
-#' rgloEd(x$rmat)
-#'
+#' \dontrun{
+#' data(bangkok)
+#' rgloEd(bangkok)
+#' }
 rgloEd <- function(data, par = NULL) {
 
   if (!is.matrix(data) && !is.data.frame(data)) {

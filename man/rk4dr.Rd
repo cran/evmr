@@ -42,24 +42,10 @@ For valid generation with \eqn{r > 1}, the second shape parameter should
 satisfy \eqn{shape2 < 1/(r-1)}.
 }
 \examples{
-x <- rk4dr(n=50, r=3, loc = 0, scale = 1, shape1 = 0.1, shape2 = 0.1)
+x <- rk4dr(10, 3, loc = 0, scale = 1, shape1 = 0.1, shape2 = 0.1)
 x$rmat
-
 }
 \references{
-Hosking, J. R. M. (1994).
-The four-parameter kappa distribution.
-\emph{IBM Journal of Research and Development}, 38(3), 251–258.
-
-Coles, S. (2001).
-An Introduction to Statistical Modeling of Extreme Values.
-Springer.
-
-Bader, B., Yan, J., & Zhang, X. (2017).
-Automated selection of \eqn{r} for the r-largest order statistics approach.
-\emph{Statistics and Computing}.
-\doi{10.1007/s11222-016-9697-3}
-
 Shin, Y., & Park, J.-S. (2023).
 Modeling climate extremes using the four-parameter kappa distribution
 for r-largest order statistics.

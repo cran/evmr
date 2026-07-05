@@ -23,10 +23,7 @@ return a combined summary table including parameter estimates,
 standard errors, and return levels.
 }
 \examples{
-\donttest{
-x <- rk4dr(n = 50, r = 2, loc = 10, scale = 2, shape1 = 0.1, shape2 = 0.1)
-evmr(x$rmat)
-
+\dontrun{
 data(bangkok)
 evmr(bangkok)
 }

@@ -24,29 +24,13 @@
 #' are added to indicate profile likelihood confidence intervals for the
 #' confidence levels specified in \code{conf}.
 #'
-#' @references
-#'
-#' Hosking, J. R. M. (1994).
-#' The four-parameter kappa distribution.
-#' \emph{IBM Journal of Research and Development}, 38(3), 251–258.
-#'
-#' Coles, S. (2001).
-#' An Introduction to Statistical Modeling of Extreme Values.
-#' Springer.
-#'
-#' Shin, Y., & Park, J.-S. (2023).
-#' Modeling climate extremes using the four-parameter kappa distribution
-#' for r-largest order statistics.
-#' \emph{Weather and Climate Extremes}.
-#' \doi{10.1016/j.wace.2022.100533}
-#'
 #' @seealso \code{\link{rk4d.fit}}, \code{\link{rk4d.rl}}
 #' @export
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' x <- rk4dr(n = 50, r = 2, loc = 10, scale = 2, shape1 = 0.1, shape2 = 0.1)
-#' fit <- rk4d.fit(x$rmat, num_inits = 100)
+#' fit <- rk4d.fit(x$rmat)
 #' rk4d.prof(fit, m = 100, xlow = 12, xup = 25)
 #' }
 rk4d.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
@@ -101,7 +85,7 @@ rk4d.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
   v <- numeric(nint)
   x <- seq(xlow, xup, length.out = nint)
   sol <- c(z$mle[2], z$mle[3], z$mle[4])  # sigma, xi, h
-  rl <- rk4d.rl(z, year = m, show=FALSE)$rl
+  rl <- rk4d.rl(z, year = m)$rl[1]
 
   rk4d.plik <- function(a) {
 
@@ -223,6 +207,7 @@ rk4d.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
   }
 
   w_df <- do.call(rbind, result_list)
+  print(w_df)
 
   plot(
     d$x, d$v, type = "l", xlab = "Return level", xlim = c(xlow, xup), las = 1,
@@ -262,5 +247,5 @@ rk4d.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
     cex = 0.8
   )
 
-  w_df
+  invisible(w_df)
 }

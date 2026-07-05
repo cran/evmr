@@ -39,10 +39,10 @@ generalized logistic model. If \code{par} is not supplied, the model
 parameters are first estimated using \code{\link{rglo.fit}}.
 }
 \examples{
-
-x <- rglor(n=50, r=3, loc = 10, scale = 2, shape = 0.1)
-rgloEd(x$rmat)
-
+\dontrun{
+data(bangkok)
+rgloEd(bangkok)
+}
 }
 \references{
 Bader, B., Yan, J., & Zhang, X. (2017).

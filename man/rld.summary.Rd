@@ -71,17 +71,6 @@ the function fits the model using \code{\link{rld.fit}} and computes
 return levels using \code{\link{rld.rl}}.
 }
 \examples{
-x <- rldr(n = 50, r = 2, loc = 10, scale = 2)
+x <- rldr(n = 50, r = 3, loc = 10, scale = 2)
 rld.summary(x$rmat, num_inits = 5)
-}
-\references{
-Coles, S. (2001).
-An Introduction to Statistical Modeling of Extreme Values.
-Springer.
-
-Shin, Y., & Park, J-S. (2024).
-Generalized logistic model for r-largest order statistics with
-hydrological application.
-\emph{Stochastic Environmental Research and Risk Assessment}.
-\doi{10.1007/s00477-023-02642-7}
 }

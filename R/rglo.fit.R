@@ -49,11 +49,6 @@
 #'
 #' @references
 #'
-#' Ahmad, M. I., Sinclair, C. D., and Werritty, A. (1988).
-#' Log-logistic flood frequency analysis.
-#' \emph{Journal of Hydrology}.
-#' \doi{10.1016/0022-1694(88)90015-7}
-#'
 #' Coles, S. (2001).
 #' An Introduction to Statistical Modeling of Extreme Values.
 #' Springer.
@@ -68,8 +63,10 @@
 #' @export
 #'
 #' @examples
-#' x <- rglor(n = 50, r = 3, loc = 10, scale = 2, shape = 0.1)
+#' x <- rglor(n = 50, r = 2, loc = 10, scale = 2, shape = 0.1)
 #' fit <- rglo.fit(x$rmat, num_inits = 5)
+#' fit$r
+#' fit$mle
 rglo.fit <- function(xdat, r = NULL, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
                      mulink = identity, siglink = identity, shlink = identity,
                      num_inits = 100, muinit = NULL, siginit = NULL, shinit = NULL,
@@ -376,5 +373,5 @@ rglo.fit <- function(xdat, r = NULL, ydat = NULL, mul = NULL, sigl = NULL, shl =
   }
 
   class(z) <- "rglo.fit"
-  z
+  invisible(z)
 }

@@ -47,6 +47,7 @@
 #' }
 #'
 #' @references
+#'
 #' Coles, S. (2001).
 #' An Introduction to Statistical Modeling of Extreme Values.
 #' Springer.
@@ -61,8 +62,10 @@
 #' @export
 #'
 #' @examples
-#' x <- rldr(n = 50, r = 3, loc = 10, scale = 2)
+#' x <- rldr(n = 50, r = 2, loc = 10, scale = 2)
 #' fit <- rld.fit(x$rmat, num_inits = 5)
+#' fit$r
+#' fit$mle
 rld.fit <- function(xdat, r = NULL, ydat = NULL, mul = NULL, sigl = NULL,
                     mulink = identity, siglink = identity, num_inits = 100,
                     muinit = NULL, siginit = NULL, show = TRUE,
@@ -321,5 +324,5 @@ rld.fit <- function(xdat, r = NULL, ydat = NULL, mul = NULL, sigl = NULL,
   }
 
   class(z) <- "rld.fit"
-  z
+  invisible(z)
 }

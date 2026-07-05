@@ -40,35 +40,12 @@
 #'         standard errors of return levels
 #' }
 #'
-#' @references
-#'
-#' Hosking, J. R. M. (1994).
-#' The four-parameter kappa distribution.
-#' \emph{IBM Journal of Research and Development}, 38(3), 251–258.
-#'
-#' Coles, S. (2001).
-#' An Introduction to Statistical Modeling of Extreme Values.
-#' Springer.
-#'
-#' Bader, B., Yan, J., & Zhang, X. (2017).
-#' Automated selection of \eqn{r} for the r-largest order statistics approach.
-#' \emph{Statistics and Computing}.
-#' \doi{10.1007/s11222-016-9697-3}
-#'
-#' Shin, Y., & Park, J.-S. (2023).
-#' Modeling climate extremes using the four-parameter kappa distribution
-#' for r-largest order statistics.
-#' \emph{Weather and Climate Extremes}.
-#' \doi{10.1016/j.wace.2022.100533}
-#'
 #' @export
 #'
 #' @examples
 #' x <- rk4dr(n = 50, r = 3, loc = 10, scale = 2, shape1 = 0.1, shape2 = 0.1)
 #' rk4d.summary(x$rmat, num_inits = 5)
-#' # penalty function
 #' rk4d.summary(x$rmat, penk = "CD", penh = "MS", num_inits = 5)
-#'
 rk4d.summary <- function(data, r = NULL, penk = NULL, penh = NULL,
                          ydat = NULL, mul = NULL, sigl = NULL, shl = NULL, hl = NULL,
                          mulink = identity, siglink = identity,

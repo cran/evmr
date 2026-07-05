@@ -24,24 +24,3 @@ returns a large penalty value.
 Computes the observation-wise log-likelihood contributions for the
 r-largest four-parameter kappa distribution (rK4D) model.
 }
-\examples{
-x <- rk4dr(n=50, r=3, loc = 10, scale = 2, shape1 = 0.1, shape2 = 0.1)
-fit <- rk4d.fit(x$rmat, num_inits = 5)
-rk4dLh(data=fit$data,par=fit$mle)
-
-}
-\references{
-Hosking, J. R. M. (1994).
-The four-parameter kappa distribution.
-\emph{IBM Journal of Research and Development}, 38(3), 251–258.
-
-Coles, S. (2001).
-An Introduction to Statistical Modeling of Extreme Values.
-Springer.
-
-Shin, Y., & Park, J.-S. (2023).
-Modeling climate extremes using the four-parameter kappa distribution
-for r-largest order statistics.
-\emph{Weather and Climate Extremes}.
-\doi{10.1016/j.wace.2022.100533}
-}

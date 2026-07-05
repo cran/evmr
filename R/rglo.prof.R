@@ -24,28 +24,11 @@
 #' are added to indicate profile likelihood confidence intervals for the
 #' confidence levels specified in \code{conf}.
 #'
-#' @references
-#'
-#' Ahmad, M. I., Sinclair, C. D., and Werritty, A. (1988).
-#' Log-logistic flood frequency analysis.
-#' \emph{Journal of Hydrology}.
-#' \doi{10.1016/0022-1694(88)90015-7}
-#'
-#' Coles, S. (2001).
-#' An Introduction to Statistical Modeling of Extreme Values.
-#' Springer.
-#'
-#' Shin, Y., & Park, J-S. (2024).
-#' Generalized logistic model for r-largest order statistics with
-#' hydrological application.
-#' \emph{Stochastic Environmental Research and Risk Assessment}.
-#' \doi{10.1007/s00477-023-02642-7}
-#'
 #' @seealso \code{\link{rglo.fit}}, \code{\link{rglo.rl}}
 #' @export
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' x <- rglor(n = 50, r = 2, loc = 10, scale = 2, shape = 0.1)
 #' fit <- rglo.fit(x$rmat)
 #' rglo.prof(fit, m = 100, xlow = 12, xup = 25)
@@ -102,7 +85,7 @@ rglo.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
   v <- numeric(nint)
   x <- seq(xlow, xup, length.out = nint)
   sol <- c(z$mle[2], z$mle[3])   # initial values: sigma, xi
-  rl <- rglo.rl(z, year = m, show=FALSE)$rl
+  rl <- rglo.rl(z, year = m)$rl[1]
 
   rglo.plik <- function(a) {
 
@@ -113,6 +96,9 @@ rglo.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
       return(Inf)
     }
 
+    # Solve return-level equation for mu
+    # xp = mu + sc/xi - sc/xi * ((1-p)/p)^xi
+    # => mu = xp - sc/xi + sc/xi * ((1-p)/p)^xi
     mu <- xp - sc / xi + (sc / xi) * (((1 - p) / p)^xi)
 
     if (!is.finite(mu)) {
@@ -220,6 +206,7 @@ rglo.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
   }
 
   w_df <- do.call(rbind, result_list)
+  print(w_df)
 
   plot(
     d$x, d$v, type = "l", xlab = "Return level", xlim = c(xlow, xup), las = 1,
@@ -259,5 +246,5 @@ rglo.prof <- function(z, m, xlow, xup, conf = 0.95, nint = 100) {
     cex = 0.8
   )
 
-  w_df
+  invisible(w_df)
 }

@@ -96,6 +96,8 @@ of the location, scale, and two shape parameters.
 \examples{
 x <- rk4dr(n = 50, r = 2, loc = 10, scale = 2, shape1 = 0.1, shape2 = 0.1)
 fit <- rk4d.fit(x$rmat, num_inits = 5)
+fit$r
+fit$mle
 }
 \references{
 Hosking, J. R. M. (1994).

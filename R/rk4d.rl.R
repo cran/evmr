@@ -24,35 +24,16 @@
 #' \left(\frac{1-(1-1/T)^h}{h}\right)^\xi,}
 #' and standard errors are obtained using the delta method.
 #'
-#' @references
-#'
-#' Hosking, J. R. M. (1994).
-#' The four-parameter kappa distribution.
-#' \emph{IBM Journal of Research and Development}, 38(3), 251–258.
-#'
-#' Coles, S. (2001).
-#' An Introduction to Statistical Modeling of Extreme Values.
-#' Springer.
-#'
-#' Bader, B., Yan, J., & Zhang, X. (2017).
-#' Automated selection of \eqn{r} for the r-largest order statistics approach.
-#' \emph{Statistics and Computing}.
-#' \doi{10.1007/s11222-016-9697-3}
-#'
-#' Shin, Y., & Park, J.-S. (2023).
-#' Modeling climate extremes using the four-parameter kappa distribution
-#' for r-largest order statistics.
-#' \emph{Weather and Climate Extremes}.
-#' \doi{10.1016/j.wace.2022.100533}
-#'
 #' @seealso \code{\link{rk4d.fit}}, \code{\link{rk4d.prof}}
 #' @export
 #'
 #' @examples
 #' x <- rk4dr(n = 50, r = 2, loc = 10, scale = 2, shape1 = 0.1, shape2 = 0.1)
 #' fit <- rk4d.fit(x$rmat, num_inits = 5)
-#' out <- rk4d.rl(fit, year = c(20, 50, 100, 200))
-rk4d.rl <- function(z, year = c(20, 50, 100, 200), show=TRUE) {
+#' out <- rk4d.rl(fit, year = c(20, 50, 100))
+#' out$rl
+#' out$rlse
+rk4d.rl <- function(z, year = c(20, 50, 100, 200), show = FALSE) {
 
   if (!inherits(z, "rk4d.fit")) {
     warning("'z' does not inherit from class 'rk4d.fit'.")
@@ -113,8 +94,9 @@ rk4d.rl <- function(z, year = c(20, 50, 100, 200), show=TRUE) {
   names(z$rl) <- paste0(as.character(year), "y")
   names(z$rlse) <- paste0(as.character(year), "y")
 
-  if(show) {
-    print(z[c("rl", "rlse")])}
+  if (show) {
+    print(z[c("rl", "rlse")])
+  }
 
-  z
+  invisible(z)
 }

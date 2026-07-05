@@ -37,9 +37,11 @@ are added to indicate profile likelihood confidence intervals for the
 confidence levels specified in \code{conf}.
 }
 \examples{
+\dontrun{
 x <- rgdr(n = 50, r = 2, loc = 10, scale = 2)
 fit <- rgd.fit(x$rmat)
 rgd.prof(fit, m = 100, xlow = 12, xup = 25)
+}
 }
 \seealso{
 \code{\link{rgd.fit}}, \code{\link{rgd.rl}}

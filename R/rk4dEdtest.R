@@ -33,15 +33,6 @@
 #' to help determine an appropriate value of \eqn{r}.
 #'
 #' @references
-#'
-#' Hosking, J. R. M. (1994).
-#' The four-parameter kappa distribution.
-#' \emph{IBM Journal of Research and Development}, 38(3), 251–258.
-#'
-#' Coles, S. (2001).
-#' An Introduction to Statistical Modeling of Extreme Values.
-#' Springer.
-#'
 #' Bader, B., Yan, J., & Zhang, X. (2017).
 #' Automated selection of \eqn{r} for the r-largest order statistics approach.
 #' \emph{Statistics and Computing}.
@@ -57,10 +48,7 @@
 #' @export
 #'
 #' @examples
-#' \donttest{
-#' x <- rk4dr(n=50, r=2, loc = 10, scale = 2, shape1 = 0.1, shape2 = 0.1)
-#' rk4dEdtest(x$rmat)
-#'
+#' \dontrun{
 #' data(bangkok)
 #' rk4dEdtest(bangkok)
 #' }

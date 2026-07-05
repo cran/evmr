@@ -23,26 +23,16 @@
 #' \deqn{x_T = \mu + \sigma \log\left(\frac{1}{\exp(-\log(1-1/T)) - 1}\right),}
 #' and standard errors are obtained using the delta method.
 #'
-#' @references
-#'
-#' Coles, S. (2001).
-#' An Introduction to Statistical Modeling of Extreme Values.
-#' Springer.
-#'
-#' Shin, Y., & Park, J-S. (2024).
-#' Generalized logistic model for r-largest order statistics with
-#' hydrological application.
-#' \emph{Stochastic Environmental Research and Risk Assessment}.
-#' \doi{10.1007/s00477-023-02642-7}
-#'
 #' @seealso \code{\link{rld.fit}}, \code{\link{rld.prof}}
 #' @export
 #'
 #' @examples
 #' x <- rldr(n = 50, r = 2, loc = 10, scale = 2)
 #' fit <- rld.fit(x$rmat, num_inits = 5)
-#' out <- rld.rl(fit,year= c(20, 50, 100, 200))
-rld.rl <- function(z, year = c(20, 50, 100, 200), show=TRUE) {
+#' out <- rld.rl(fit, year = c(20, 50, 100))
+#' out$rl
+#' out$rlse
+rld.rl <- function(z, year = c(20, 50, 100, 200), show = FALSE) {
 
   if (!inherits(z, "rld.fit")) {
     warning("'z' does not inherit from class 'rld.fit'.")
@@ -90,8 +80,9 @@ rld.rl <- function(z, year = c(20, 50, 100, 200), show=TRUE) {
   names(z$rl) <- paste0(as.character(year), "y")
   names(z$rlse) <- paste0(as.character(year), "y")
 
-  if(show) {
-    print(z[c("rl", "rlse")])}
+  if (show) {
+    print(z[c("rl", "rlse")])
+  }
 
-  z
+  invisible(z)
 }

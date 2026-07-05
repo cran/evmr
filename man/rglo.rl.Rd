@@ -4,7 +4,7 @@
 \alias{rglo.rl}
 \title{Return Levels for the Generalized Logistic Distribution}
 \usage{
-rglo.rl(z, year = c(20, 50, 100, 200), show = TRUE)
+rglo.rl(z, year = c(20, 50, 100, 200), show = FALSE)
 }
 \arguments{
 \item{z}{An object returned by \code{\link{rglo.fit}}. The fitted model
@@ -36,25 +36,11 @@ which is equivalently written in the implementation as
 Standard errors are obtained using the delta method.
 }
 \examples{
-x <- rglor(n = 50, r = 3, loc = 10, scale = 2, shape = 0.1)
+x <- rglor(n = 50, r = 2, loc = 10, scale = 2, shape = 0.1)
 fit <- rglo.fit(x$rmat)
-out <- rglo.rl(fit, year = c(20, 50, 100, 200))
-}
-\references{
-Ahmad, M. I., Sinclair, C. D., and Werritty, A. (1988).
-Log-logistic flood frequency analysis.
-\emph{Journal of Hydrology}.
-\doi{10.1016/0022-1694(88)90015-7}
-
-Coles, S. (2001).
-An Introduction to Statistical Modeling of Extreme Values.
-Springer.
-
-Shin, Y., & Park, J-S. (2024).
-Generalized logistic model for r-largest order statistics with
-hydrological application.
-\emph{Stochastic Environmental Research and Risk Assessment}.
-\doi{10.1007/s00477-023-02642-7}
+out <- rglo.rl(fit, year = c(20, 50, 100))
+out$rl
+out$rlse
 }
 \seealso{
 \code{\link{rglo.fit}}, \code{\link{rglo.prof}}

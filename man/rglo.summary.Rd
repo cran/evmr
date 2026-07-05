@@ -76,21 +76,4 @@ and computes return levels using \code{\link{rglo.rl}}.
 \examples{
 x <- rglor(n = 50, r = 3, loc = 10, scale = 2, shape = 0.1)
 rglo.summary(x$rmat, num_inits = 5)
-
-}
-\references{
-Ahmad, M. I., Sinclair, C. D., and Werritty, A. (1988).
-Log-logistic flood frequency analysis.
-\emph{Journal of Hydrology}.
-\doi{10.1016/0022-1694(88)90015-7}
-
-Coles, S. (2001).
-An Introduction to Statistical Modeling of Extreme Values.
-Springer.
-
-Shin, Y., & Park, J-S. (2024).
-Generalized logistic model for r-largest order statistics with
-hydrological application.
-\emph{Stochastic Environmental Research and Risk Assessment}.
-\doi{10.1007/s00477-023-02642-7}
 }

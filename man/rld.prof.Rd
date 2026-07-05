@@ -38,21 +38,11 @@ are added to indicate profile likelihood confidence intervals for the
 confidence levels specified in \code{conf}.
 }
 \examples{
+\dontrun{
 x <- rldr(n = 50, r = 2, loc = 10, scale = 2)
 fit <- rld.fit(x$rmat)
 rld.prof(fit, m = 100, xlow = 12, xup = 25)
-
 }
-\references{
-Coles, S. (2001).
-An Introduction to Statistical Modeling of Extreme Values.
-Springer.
-
-Shin, Y., & Park, J-S. (2024).
-Generalized logistic model for r-largest order statistics with
-hydrological application.
-\emph{Stochastic Environmental Research and Risk Assessment}.
-\doi{10.1007/s00477-023-02642-7}
 }
 \seealso{
 \code{\link{rld.fit}}, \code{\link{rld.rl}}

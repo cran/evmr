@@ -82,6 +82,8 @@
 #' @examples
 #' x <- rk4dr(n = 50, r = 2, loc = 10, scale = 2, shape1 = 0.1, shape2 = 0.1)
 #' fit <- rk4d.fit(x$rmat, num_inits = 5)
+#' fit$r
+#' fit$mle
 rk4d.fit <- function(xdat, r = NULL, penk = NULL, penh = NULL,
                      ydat = NULL, mul = NULL, sigl = NULL, shl = NULL, hl = NULL,
                      mulink = identity, siglink = identity,
@@ -461,5 +463,5 @@ rk4d.fit <- function(xdat, r = NULL, penk = NULL, penh = NULL,
   }
 
   class(z) <- "rk4d.fit"
-  z
+  invisible(z)
 }

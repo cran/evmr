@@ -49,12 +49,8 @@
 #' @export
 #'
 #' @examples
-#'
-#' \donttest{
-#' x <- rggdr(n=50, r=3, loc = 10, scale = 2, shape = 0.1)
-#' rggdEdtest(x$rmat)
-#'
-#' #' data(bangkok)
+#' \dontrun{
+#' data(bangkok)
 #' rggdEdtest(bangkok)
 #' }
 rggdEdtest <- function(data) {

@@ -38,7 +38,7 @@
 #' @export
 #'
 #' @examples
-#' x <- rgdr(n = 50, r = 2, loc = 10, scale = 2)
+#' x <- rgdr(n = 50, r = 3, loc = 10, scale = 2)
 #' rgd.summary(x$rmat)
 rgd.summary <- function(data, r = NULL, ydat = NULL, mul = NULL, sigl = NULL,
                         mulink = identity, siglink = identity, num_inits = 100,

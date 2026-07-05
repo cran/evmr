@@ -41,6 +41,6 @@ For valid generation, the shape parameter must satisfy
 \eqn{h < 1/(r-1)} when \eqn{r > 1}.
 }
 \examples{
-x <- rggdr(n=10, r=3, loc = 10, scale = 2, shape = 0.1)
+x <- rggdr(10, 3, loc = 0, scale = 1, shape = 0.1)
 x$rmat
 }

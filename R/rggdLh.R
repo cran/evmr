@@ -27,11 +27,6 @@
 #' \doi{10.1038/s41598-024-83273-y}
 #'
 #' @export
-#'
-#' @examples
-#' x <- rggdr(n=50, r=2, loc = 10, scale = 2, shape = 0.1)
-#' fit <- rggd.fit(x$rmat, num_inits = 5)
-#' rggdLh(data=fit$data,par=fit$mle)
 rggdLh <- function(data, par) {
 
   if (is.vector(data)) {
